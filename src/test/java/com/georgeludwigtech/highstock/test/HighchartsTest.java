@@ -15,8 +15,8 @@ public class HighchartsTest extends SeleniumTestCase{
 			
 			@Override
 			public boolean until() {
-				return isElementPresent("//head/script[contains(@src,'highcharts.src.js')]");
+				return isElementPresent("//head/script[contains(@src,'highstock.src.js')]");
 			}
-		}.wait("The HighCharts JavaScript file is missing.", 5000l);
+		}.wait("The HighStock JavaScript file is missing.", 5000l);
 	}
 }

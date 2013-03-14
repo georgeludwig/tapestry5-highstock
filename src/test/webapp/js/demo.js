@@ -7,7 +7,7 @@
 		}
 		
 		function basicComponent(spec){
-			$("#abstracthighcharts").data('highcharts', {
+			$("#abstracthighcharts").data('highstock', {
 				chart: {
 					type: 'line',
 					marginRight: 130,
@@ -62,7 +62,7 @@
 		}
 		
 		function customComponent(spec){
-			$("#myownchart").data('highcharts', {
+			$("#myownchart").data('highstock', {
 				chart: {
 					type: 'line',
 					marginRight: 130,

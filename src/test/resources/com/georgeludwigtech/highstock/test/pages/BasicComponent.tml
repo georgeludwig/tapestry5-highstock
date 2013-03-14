@@ -1,8 +1,8 @@
-<html t:type="layout" t:title="Tapestry5 highcharts" t:activeElement="0"  
+<html t:type="layout" t:title="Tapestry5 highstock" t:activeElement="0"  
 		xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
 
 	<h1>Demo</h1>
-	<div t:clientId="container" t:type="jquery-highcharts/AbstractHighCharts" t:options="options"/>
+	<div t:clientId="container" t:type="jquery-highstock/AbstractHighCharts" t:options="options"/>
 	
 	<h1>Source code</h1>
 	

@@ -12,14 +12,14 @@ import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.got5.tapestry5.jquery.utils.JQueryUtils;
 
-import com.georgeludwigtech.highstock.services.HighChartsStack;
+import com.georgeludwigtech.highstock.services.HighStockStack;
 
 /**
- * This component is the base of any HighCharts !! You can use it for all your charts, and 
+ * This component is the base of any HighStock !! You can use it for all your charts, and 
  * define all the parameters by using the options parameters or by adding datas to the jquery 
- * object : $("#clientId").data("highcharts", {...}); The Java and JavaScript JSON parameter 
- * will be merged during the initialization of the HighCharts. 
- * If you set these parameters by JavaScript, you have to do it before the initialization of the HighCharts. 
+ * object : $("#clientId").data("highstock", {...}); The Java and JavaScript JSON parameter 
+ * will be merged during the initialization of the HighStock. 
+ * If you set these parameters by JavaScript, you have to do it before the initialization of the HighStock. 
  * In your Java Class, for example, you need to use this method : javascript.addInitializerCall(
  * InitializationPriority.EARLY, "index", new JSONObject()); of the JavaScriptSupport service.
  * 
@@ -28,7 +28,7 @@ import com.georgeludwigtech.highstock.services.HighChartsStack;
  * 
  * @author Emmanuel DEMEY
  */
-@Import(stack=HighChartsStack.STACK_ID, library="classpath:com/georgeludwigtech/jquery/highcharts/asset/jquery-highchart.js")
+@Import(stack=HighStockStack.STACK_ID, library="classpath:com/georgeludwigtech/jquery/highstock/asset/jquery-highstock.js")
 public class AbstractHighCharts implements ClientElement{
 	
 	private String clientId;
@@ -61,7 +61,7 @@ public class AbstractHighCharts implements ClientElement{
 		JQueryUtils.merge(params, options);
 		
 		opt.put("opt", params);
-		javascript.addInitializerCall("highcharts", opt);
+		javascript.addInitializerCall("highstock", opt);
 	}
 	
 	public JSONObject getComponentOptions(){

@@ -11,25 +11,25 @@ public class HighchartsModule {
 
 	public static void contributeJavaScriptStackSource(
 			MappedConfiguration<String, JavaScriptStack> configuration) {
-		configuration.addInstance(HighChartsStack.STACK_ID,
-				HighChartsStack.class);
+		configuration.addInstance(HighStockStack.STACK_ID,
+				HighStockStack.class);
 	}
 
 	public static void contributeComponentClassResolver(
 			Configuration<LibraryMapping> configuration) {
-		configuration.add(new LibraryMapping("jquery-highcharts",
+		configuration.add(new LibraryMapping("jquery-highstock",
 				"com.georgeludwigtech.highstock"));
 	}
 
 	public static void contributeClasspathAssetAliasManager(
 			MappedConfiguration<String, String> configuration) {
-		configuration.add("tap-jquery-highcharts", "com/georgeludwigtech");
+		configuration.add("tap-jquery-highstock", "com/georgeludwigtech");
 	}
 	
 	public static void contributeFactoryDefaults(MappedConfiguration<String, String> configuration)
     {
        
-        configuration.add(HighChartsSymbolConstants.JQUERY_HIGHCHARTS_CORE_PATH, "classpath:com/georgeludwigtech/jquery/highcharts/asset");
+        configuration.add(HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH, "classpath:com/georgeludwigtech/jquery/highstock/asset");
         
     }
 }

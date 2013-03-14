@@ -6,7 +6,7 @@
         <parameter name="tapestry.browser-start-command" value="*firefox" />
 
         <classes>
-          <class name="com.georgeludwigtech.highstock.test.HighchartsTest"></class>
+          <class name="com.georgeludwigtech.highstock.test.HighStockTest"></class>
         </classes>
     </test>
   </suite>

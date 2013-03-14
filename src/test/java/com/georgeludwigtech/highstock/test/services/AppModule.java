@@ -12,7 +12,7 @@ public class AppModule {
 	public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration)
     {
         configuration.add(SymbolConstants.PRODUCTION_MODE, "false");
-        configuration.add("demo-src-dir","/Users/George/git/tapestry5-highcharts/src/test/");
+        configuration.add("demo-src-dir","/Users/George/git/tapestry5-highstock/src/test/");
     }
 	
 }
