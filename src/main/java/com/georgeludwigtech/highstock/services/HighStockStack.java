@@ -6,13 +6,13 @@ import java.util.List;
 
 import org.apache.tapestry5.Asset;
 import org.apache.tapestry5.SymbolConstants;
-import org.apache.tapestry5.func.F;
-import org.apache.tapestry5.func.Mapper;
 import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.apache.tapestry5.services.AssetSource;
 import org.apache.tapestry5.services.javascript.JavaScriptStack;
 import org.apache.tapestry5.services.javascript.StylesheetLink;
+
+import com.georgeludwigtech.highstock.HighChartsSymbolConstants;
 
 public class HighStockStack implements JavaScriptStack{
 	
@@ -29,48 +29,29 @@ public class HighStockStack implements JavaScriptStack{
 		super();
 		this.productionMode = productionMode;
 		
-		final Mapper<String, Asset> pathToAsset = new Mapper<String, Asset>()
-        {
-
-            public Asset map(String path)
-            {
-                return assetSource.getExpandedAsset(path);
-            }
-        };
-
-
         stylesheetStack = CollectionFactory.newList();
         
-        List<Asset>assetList1 = null;
-        List<Asset>assetList2 = null;
+        List<Asset>assetList=new ArrayList<Asset>();
         
         if (productionMode) {
         	
-        	assetList1 = F
-                .flow("${jquery.highstock.core.path}/highstock.js")
-                .map(pathToAsset).toList();
+        	Asset asset=assetSource.getExpandedAsset("${"+HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highstock.js");
+            assetList.add(asset);
         	
-        	assetList2 = F
-        		.flow("${jquery.highstock.core.path}/highcharts-more.js")
-            	.map(pathToAsset).toList();
-        	
-   	
+            asset=assetSource.getExpandedAsset("${"+HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highcharts-more.js");
+            assetList.add(asset);
+            
         } else {
         	
-        	assetList1 = F
-                    .flow("${jquery.highstock.core.path}/highstock.src.js")
-                    .map(pathToAsset).toList();
-            	
-        	assetList2 = F
-        		.flow("${jquery.highstock.core.path}/highcharts-more.src.js")
-            	.map(pathToAsset).toList();
-
+        	Asset asset=assetSource.getExpandedAsset("${"+HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highstock.src.js");
+            assetList.add(asset);
+        	
+            asset=assetSource.getExpandedAsset("${"+HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highcharts-more.src.js");
+            assetList.add(asset);
+   
         }
         
-        List<Asset>sum=new ArrayList<Asset>();
-        sum.addAll(assetList1);
-        sum.addAll(assetList2);
-        javaScriptStack=sum;
+         javaScriptStack=assetList;
 		
 	}
     

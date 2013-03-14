@@ -61,7 +61,7 @@ public class AbstractHighCharts implements ClientElement{
 		JQueryUtils.merge(params, options);
 		
 		opt.put("opt", params);
-		javascript.addInitializerCall("highstock", opt);
+		javascript.addInitializerCall("highcharts", opt);
 	}
 	
 	public JSONObject getComponentOptions(){
