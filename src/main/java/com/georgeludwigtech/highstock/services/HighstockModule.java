@@ -5,9 +5,9 @@ import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.services.LibraryMapping;
 import org.apache.tapestry5.services.javascript.JavaScriptStack;
 
-import com.georgeludwigtech.highstock.HighChartsSymbolConstants;
+import com.georgeludwigtech.highstock.HighStockSymbolConstants;
 
-public class HighchartsModule {
+public class HighstockModule {
 
 	public static void contributeJavaScriptStackSource(
 			MappedConfiguration<String, JavaScriptStack> configuration) {
@@ -29,7 +29,7 @@ public class HighchartsModule {
 	public static void contributeFactoryDefaults(MappedConfiguration<String, String> configuration)
     {
        
-        configuration.add(HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH, "classpath:com/georgeludwigtech/jquery/highstock/asset");
+        configuration.add(HighStockSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH, "classpath:com/georgeludwigtech/jquery/highstock/asset");
         
     }
 }

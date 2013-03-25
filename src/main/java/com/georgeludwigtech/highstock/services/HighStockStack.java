@@ -12,7 +12,7 @@ import org.apache.tapestry5.services.AssetSource;
 import org.apache.tapestry5.services.javascript.JavaScriptStack;
 import org.apache.tapestry5.services.javascript.StylesheetLink;
 
-import com.georgeludwigtech.highstock.HighChartsSymbolConstants;
+import com.georgeludwigtech.highstock.HighStockSymbolConstants;
 
 public class HighStockStack implements JavaScriptStack{
 	
@@ -35,18 +35,18 @@ public class HighStockStack implements JavaScriptStack{
         
         if (productionMode) {
         	
-        	Asset asset=assetSource.getExpandedAsset("${"+HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highstock.js");
+        	Asset asset=assetSource.getExpandedAsset("${"+HighStockSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highstock.js");
             assetList.add(asset);
         	
-            asset=assetSource.getExpandedAsset("${"+HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highcharts-more.js");
+            asset=assetSource.getExpandedAsset("${"+HighStockSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highcharts-more.js");
             assetList.add(asset);
             
         } else {
         	
-        	Asset asset=assetSource.getExpandedAsset("${"+HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highstock.src.js");
+        	Asset asset=assetSource.getExpandedAsset("${"+HighStockSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highstock.src.js");
             assetList.add(asset);
         	
-            asset=assetSource.getExpandedAsset("${"+HighChartsSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highcharts-more.src.js");
+            asset=assetSource.getExpandedAsset("${"+HighStockSymbolConstants.JQUERY_HIGHSTOCK_CORE_PATH+"}/highcharts-more.src.js");
             assetList.add(asset);
    
         }

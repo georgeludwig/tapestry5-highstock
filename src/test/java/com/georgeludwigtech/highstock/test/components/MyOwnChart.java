@@ -2,9 +2,9 @@ package com.georgeludwigtech.highstock.test.components;
 
 import org.apache.tapestry5.json.JSONObject;
 
-import com.georgeludwigtech.highstock.components.AbstractHighCharts;
+import com.georgeludwigtech.highstock.components.AbstractHighStock;
 
-public class MyOwnChart extends AbstractHighCharts{
+public class MyOwnChart extends AbstractHighStock{
 
 	public JSONObject getComponentOptions(){
 		

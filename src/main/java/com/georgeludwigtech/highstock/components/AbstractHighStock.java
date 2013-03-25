@@ -29,7 +29,7 @@ import com.georgeludwigtech.highstock.services.HighStockStack;
  * @author Emmanuel DEMEY
  */
 @Import(stack=HighStockStack.STACK_ID, library="classpath:com/georgeludwigtech/jquery/highstock/asset/jquery-highstock.js")
-public class AbstractHighCharts implements ClientElement{
+public class AbstractHighStock implements ClientElement{
 	
 	private String clientId;
 	

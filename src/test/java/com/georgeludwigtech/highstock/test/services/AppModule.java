@@ -4,9 +4,9 @@ import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.annotations.SubModule;
 
-import com.georgeludwigtech.highstock.services.HighchartsModule;
+import com.georgeludwigtech.highstock.services.HighstockModule;
 
-@SubModule(HighchartsModule.class)
+@SubModule(HighstockModule.class)
 public class AppModule {
 	
 	public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration)
