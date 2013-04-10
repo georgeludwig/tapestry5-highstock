@@ -57,21 +57,20 @@ public class BasicComponent {
   
     protected void buildXAxis(JSONObject opts) {  
   
-        JSONObject xCategories = new JSONObject();        
-        JSONArray values = new JSONArray("18:00-00:00", "12:00-18:00",  
-                "06:00-12:00", "00:00-06:00");  
-        xCategories.put("categories", values);  
-        xCategories.put("categories", values);  
-          
-        JSONObject xAxisC = new JSONObject();  
-        xAxisC.put("xAxis", xCategories);  
-          
-        JSONObject xTitleText = new JSONObject();  
-        xTitleText.put("text", "Time interval");  
-        xAxisC.put("title", xTitleText);  
-          
-        opts.put("xAxis", xAxisC );       
-                  
+//        JSONObject xCategories = new JSONObject();        
+//        JSONArray values = new JSONArray("18:00-00:00", "12:00-18:00",  
+//                "06:00-12:00", "00:00-06:00");  
+//        xCategories.put("categories", values);  
+//          
+//        JSONObject xAxisC = new JSONObject();  
+//        xAxisC.put("xAxis", xCategories);  
+//          
+//        JSONObject xTitleText = new JSONObject();  
+//        xTitleText.put("text", "Time interval");  
+//        xAxisC.put("title", xTitleText);  
+//          
+//        opts.put("xAxis", xAxisC );       
+//                  
     }  
   
     protected void buildYAxis(JSONObject opts) {  
@@ -106,9 +105,17 @@ public class BasicComponent {
         JSONObject seriesInner = new JSONObject(new String[] { "name",  
                 "No of visits", "color", "#0000FF" });  
         seriesInner.put("showInLegend", new JSONLiteral("false"));  
-          
-        JSONArray seriesData = new JSONArray(new JSONLiteral("7"),new JSONLiteral("3"),  
-                   new JSONLiteral("4"), new JSONLiteral("5"));  
+        
+       
+        JSONArray seriesData = new JSONArray();
+        long now=System.currentTimeMillis();
+        //long day
+        for(int i=0;i<100;i++) {
+        	seriesData.put(new JSONLiteral(""));
+        }
+        
+//        JSONArray seriesData = new JSONArray(new JSONLiteral("7"),new JSONLiteral("3"),  
+//                   new JSONLiteral("4"), new JSONLiteral("5"));  
   
         seriesInner.put("data", seriesData);  
         opts.put("series", new JSONArray(seriesInner));  
