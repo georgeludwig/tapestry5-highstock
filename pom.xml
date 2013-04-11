@@ -9,9 +9,7 @@
 	<name>Tapestry 5 HighStock</name>
 	
 	<scm>
-		<connection>scm:svn:https://devtools.georgeludwigtech.com/svn/georgeludwigtech/tags/ui-1.1.17</connection>
-		<developerConnection>scm:svn:https://devtools.georgeludwigtech.com/svn/georgeludwigtech/tags/ui-1.1.17</developerConnection>
-		<url>https://devtools.georgeludwigtech.com/svn/georgeludwigtech/tags/ui-1.1.17</url>
+		<developerConnection>scm:git:https://github.com/georgeludwig/tapestry5-highstock.git</developerConnection>
 	</scm>
 
 	<dependencies>
