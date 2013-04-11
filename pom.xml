@@ -9,7 +9,9 @@
 	<name>Tapestry 5 HighStock</name>
 	
 	<scm>
+		<connection>scm:git:https://github.com/georgeludwig/tapestry5-highstock.git</connection>
 		<developerConnection>scm:git:https://github.com/georgeludwig/tapestry5-highstock.git</developerConnection>
+		<url>https://github.com/georgeludwig/tapestry5-highstock</url>
 	</scm>
 
 	<dependencies>
