@@ -2,11 +2,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.got5</groupId>
+	<groupId>com.georgeludwigtech</groupId>
 	<artifactId>tapestry5-highstock</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>Tapestry 5 HighStock	</name>
+	<name>Tapestry 5 HighStock</name>
+	
+	<scm>
+		<connection>scm:svn:https://devtools.georgeludwigtech.com/svn/georgeludwigtech/tags/ui-1.1.17</connection>
+		<developerConnection>scm:svn:https://devtools.georgeludwigtech.com/svn/georgeludwigtech/tags/ui-1.1.17</developerConnection>
+		<url>https://devtools.georgeludwigtech.com/svn/georgeludwigtech/tags/ui-1.1.17</url>
+	</scm>
 
 	<dependencies>
 
@@ -15,7 +21,6 @@
 			<artifactId>tapestry-core</artifactId>
 			<version>${tapestry-release-version}</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.testng</groupId>
