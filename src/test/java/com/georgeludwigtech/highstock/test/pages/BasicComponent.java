@@ -31,7 +31,7 @@ public class BasicComponent {
   
     protected void buildTitle(JSONObject opts) {  
         JSONObject titleText = new JSONObject();  
-        titleText.put("text", "<b>Hourly Visits in The last 24 Hours</b>");  
+        titleText.put("text", "<b>SImple Test Data</b>");  
         opts.put("title", titleText);  
   
     }  
@@ -51,7 +51,7 @@ public class BasicComponent {
         xAxisC.put("title", xTitleText);  
           
         opts.put("xAxis", xAxisC );       
-//                  
+               
     }  
   
     protected void buildYAxis(JSONObject opts) {  
@@ -84,7 +84,7 @@ public class BasicComponent {
     protected void buildSeries(JSONObject opts) {  
   
         JSONObject seriesInner = new JSONObject(new String[] { "name",  
-                "No of visits", "color", "#0000FF" });  
+                "Simple Test Counter", "color", "#0000FF" });  
         seriesInner.put("showInLegend", new JSONLiteral("false"));  
         
        
