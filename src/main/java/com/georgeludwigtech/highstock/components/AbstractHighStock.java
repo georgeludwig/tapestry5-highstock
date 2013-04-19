@@ -1,23 +1,24 @@
 package com.georgeludwigtech.highstock.components;
 
+import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.MarkupWriter;
 import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Parameter;
+import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
-import org.got5.tapestry5.jquery.utils.JQueryUtils;
 
 import com.georgeludwigtech.highstock.services.HighStockStack;
 
 /**
  * This component is the base of any HighStock !! You can use it for all your charts, and 
  * define all the parameters by using the options parameters or by adding datas to the jquery 
- * object : $("#clientId").data("highstock", {...}); The Java and JavaScript JSON parameter 
+ * object : $("#client").data("highstock", {...}); The Java and JavaScript JSON parameter 
  * will be merged during the initialization of the HighStock. 
  * If you set these parameters by JavaScript, you have to do it before the initialization of the HighStock. 
  * In your Java Class, for example, you need to use this method : javascript.addInitializerCall(
@@ -31,9 +32,11 @@ import com.georgeludwigtech.highstock.services.HighStockStack;
 @Import(stack=HighStockStack.STACK_ID, library="classpath:com/georgeludwigtech/jquery/highstock/asset/jquery-highstock.js")
 public class AbstractHighStock implements ClientElement{
 	
+	@Parameter(name="clientId", defaultPrefix=BindingConstants.LITERAL, required=true)
 	private String clientId;
 	
-	@Parameter
+	@Parameter(name="options", required=false)
+	@Property
 	private JSONObject options;
 	
 	@Inject
@@ -44,23 +47,22 @@ public class AbstractHighStock implements ClientElement{
 	
 	@SetupRender
 	public void addDiv(MarkupWriter writer){
-		clientId = javascript.allocateClientId(resources);
 		writer.element("div", "id", clientId);
 	}
 	
 	@AfterRender
 	public void setJS(MarkupWriter writer){
-		resources.renderInformalParameters(writer);
+ 		resources.renderInformalParameters(writer);
 		writer.end();
 		
 		JSONObject opt = new JSONObject();
-		opt.put("id", clientId);
+		opt.put("id", getClientId());
 		
 		JSONObject params = getComponentOptions();	
 		
-		JQueryUtils.merge(params, options);
+		JSONObject merged=merge(params, options);
 		
-		opt.put("opt", params);
+		opt.put("opt", merged);
 		javascript.addInitializerCall("highcharts", opt);
 	}
 	
@@ -73,4 +75,30 @@ public class AbstractHighStock implements ClientElement{
 	public String getClientId() {
 		return clientId;
 	}
+	
+	// object 2 has priority over identical properties
+	public final static JSONObject merge(JSONObject obj1, JSONObject obj2) {
+		JSONObject ret=new JSONObject();
+		
+		// copy obj1 to ret
+		if(obj1!=null) {
+			for (String key : obj1.keys()) {
+				ret.put(key, obj1.get(key));
+			}
+		}
+		
+		// merge obj2 to ret
+		if(obj2!=null) {
+			for (String key : obj2.keys()) {
+				if(ret.has(key)) {
+					JSONObject temp=merge(ret.getJSONObject(key),obj2.getJSONObject(key));
+					ret.put(key, temp);
+				} else {
+					ret.put(key, obj2.get(key));
+				}
+			}
+		}
+        
+        return ret;
+    }
 }

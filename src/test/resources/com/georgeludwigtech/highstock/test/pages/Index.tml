@@ -27,7 +27,7 @@
 				<dependency>
 					<groupId>com.georgeludwigtech</groupId>
 					<artifactId>tapestry5-highstock</artifactId>
-					<version>1.0.0</version>
+					<version>1.0.1</version>
 				</dependency>
 			]]></code>
 			<code><![CDATA[
@@ -38,13 +38,10 @@
 			]]></code>
 		</pre>
 		<p>
-			All the next components will be based on the AbstractHighCharts component. 
-			You can use it for all your charts, and define all the parameters by using 
-			the options parameters or by adding data to the jquery object : 
+			You can use the AbstractHighStock component for all your charts,
+			and define all the parameters by using the options parameters.
 		</p>
-		<pre>
-			<code>$("#clientId").data("highstock", {...});</code>
-		</pre>
+		
 		<p>
 			The Java and JavaScript JSON parameter will be merged during the initialization 
 			of the HighCharts. If you set these parameters by JavaScript, you have to do it before 
@@ -54,22 +51,17 @@
 		<pre>
 			<code>javascript.addInitializerCall(InitializationPriority.EARLY, "index", new JSONObject());</code>
 		</pre>
-		<p>
-			You can also create your own HighStockt component, by extending the AbstractHighCharts class 
-			and overriding the getComponentOptions() method. The returned value of this method 
-			will be merged to the options parameter.
-		</p>
 		
 		<h1>Components</h1>
 		<ul>
 			<li><a t:type="pageLink" t:page="BasicComponent">AbstractHighCharts</a> : Basic HighCharts Component</li>
-			<li><a t:type="pageLink" t:page="CustomComponent">Cutom Component</a> : How to create your own component</li>
 		</ul>
 		
 		<h1>History</h1>
 		
 		<ul>
-			<li>1.0.0-SNAPSHOT : Initial Version. Creation of the <strong>AbstractHighCharts</strong> Component</li>
+			<li>1.0.0-SNAPSHOT : Initial Version. Creation of the <strong>AbstractHighStock</strong> Component</li>
+			<li>1.0.1-SNAPSHOT : First bug fix, now the chart is properly rendered in to the div id specified by the clientId parameter</li>
 		</ul>
 		<h1>Contributors</h1>
 		

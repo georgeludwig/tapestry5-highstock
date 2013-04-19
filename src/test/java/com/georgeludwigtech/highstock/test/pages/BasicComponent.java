@@ -11,25 +11,7 @@ public class BasicComponent {
 	@Inject
 	private JavaScriptSupport javascript;
 	
-//	public JSONObject getOptions(){
-//		JSONObject opt = new JSONObject();
-//		opt.put("text", "Source: WorldClimate.com");
-//		opt.put("x", -20);
-//		
-//		JSONObject high = new JSONObject();
-//		high.put("subtitle", opt);
-//		
-//		return high;
-//	}
-//	
-//	@AfterRender
-//	public void afterRender(){
-//		javascript.addInitializerCall(InitializationPriority.EARLY, "basicComponent", new JSONObject());
-//		javascript.addInitializerCall("documentation", new JSONObject());
-//	}
-//	
-	
-	public JSONObject getChartOptions() {  
+	public JSONObject getOptions() {  
         JSONObject opts = new JSONObject();  
         buildChart(opts);         
         buildTitle(opts);         
@@ -42,8 +24,7 @@ public class BasicComponent {
     }  
   
     protected void buildChart(JSONObject opts) {  
-        JSONObject chartC = new JSONObject("type", "spline", "renderTo",  
-                "abstracthighstock");  
+        JSONObject chartC = new JSONObject("type", "spline");  
   
         opts.put("chart", chartC);  
     }  
@@ -57,19 +38,19 @@ public class BasicComponent {
   
     protected void buildXAxis(JSONObject opts) {  
   
-//        JSONObject xCategories = new JSONObject();        
-//        JSONArray values = new JSONArray("18:00-00:00", "12:00-18:00",  
-//                "06:00-12:00", "00:00-06:00");  
-//        xCategories.put("categories", values);  
-//          
-//        JSONObject xAxisC = new JSONObject();  
-//        xAxisC.put("xAxis", xCategories);  
-//          
-//        JSONObject xTitleText = new JSONObject();  
-//        xTitleText.put("text", "Time interval");  
-//        xAxisC.put("title", xTitleText);  
-//          
-//        opts.put("xAxis", xAxisC );       
+        JSONObject xCategories = new JSONObject();        
+        JSONArray values = new JSONArray("18:00-00:00", "12:00-18:00",  
+                "06:00-12:00", "00:00-06:00");  
+        xCategories.put("categories", values);  
+          
+        JSONObject xAxisC = new JSONObject();  
+        xAxisC.put("xAxis", xCategories);  
+          
+        JSONObject xTitleText = new JSONObject();  
+        xTitleText.put("text", "Time interval");  
+        xAxisC.put("title", xTitleText);  
+          
+        opts.put("xAxis", xAxisC );       
 //                  
     }  
   
@@ -108,15 +89,13 @@ public class BasicComponent {
         
        
         JSONArray seriesData = new JSONArray();
-        long now=System.currentTimeMillis();
+        long dayMillis=86400000;
+        long time=System.currentTimeMillis()-(dayMillis*101);
         //long day
         for(int i=0;i<100;i++) {
-        	seriesData.put(new JSONLiteral(""));
+        	seriesData.put(new JSONArray(time-(dayMillis*(100-i)),i));
         }
         
-//        JSONArray seriesData = new JSONArray(new JSONLiteral("7"),new JSONLiteral("3"),  
-//                   new JSONLiteral("4"), new JSONLiteral("5"));  
-  
         seriesInner.put("data", seriesData);  
         opts.put("series", new JSONArray(seriesInner));  
   

@@ -2,16 +2,14 @@
 		xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
 
 	<h1>Demo</h1>
-	<div t:clientId="container" t:type="jquery-highstock/AbstractHighStock" t:options="chartOptions"/>
+	<div t:type="jquery-highstock/AbstractHighStock" t:clientid="basicContainer" t:options="options"/>
 	
 	<h1>Source code</h1>
-	
-	<h3>JavaScript Code</h3>
-	<div t:type="jquery/showSource" t:ext="java" t:beginLine="8" t:endLine="63" t:path="webapp/js/demo.js"></div>
 	
 	<h3>Template Code</h3>
 	<div t:type="jquery/showSource" t:ext="html" t:beginLine="5" t:endLine="5" t:path="resources/com/georgeludwigtech/highstock/test/pages/BasicComponent.tml"></div>
 	
 	<h3>Java Code</h3>
-	<div t:type="jquery/showSource" t:ext="java" t:beginLine="9" t:endLine="30" t:path="java/com/georgeludwigtech/highstock/test/pages/BasicComponent.java"></div>
+	<div t:type="jquery/showSource" t:ext="java" t:beginLine="14" t:endLine="102" t:path="java/com/georgeludwigtech/highstock/test/pages/BasicComponent.java"></div>
+	
 </html>
