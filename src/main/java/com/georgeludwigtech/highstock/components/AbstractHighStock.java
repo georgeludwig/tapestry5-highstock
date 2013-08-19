@@ -68,7 +68,8 @@ public class AbstractHighStock implements ClientElement{
 	
 	public JSONObject getComponentOptions(){
 		JSONObject json = new JSONObject();
-		json.put("chart", new JSONObject("renderTo", getClientId()));
+		String id=getClientId();
+		json.put("chart", new JSONObject("renderTo", id));
 		return json;
 	}
 	
