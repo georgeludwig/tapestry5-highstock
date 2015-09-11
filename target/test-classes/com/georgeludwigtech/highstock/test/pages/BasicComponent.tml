@@ -1,0 +1,15 @@
+<html t:type="layout" t:title="Tapestry5 highstock" t:activeElement="0"  
+		xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+
+	<h1>Demo</h1>
+	<div t:type="jquery-highstock/AbstractHighStock" t:clientid="basicContainer" t:options="options"/>
+	
+	<h1>Source code</h1>
+	
+	<h3>Template Code</h3>
+	<div t:type="jquery/showSource" t:ext="html" t:beginLine="5" t:endLine="5" t:path="resources/com/georgeludwigtech/highstock/test/pages/BasicComponent.tml"></div>
+	
+	<h3>Java Code</h3>
+	<div t:type="jquery/showSource" t:ext="java" t:beginLine="14" t:endLine="102" t:path="java/com/georgeludwigtech/highstock/test/pages/BasicComponent.java"></div>
+	
+</html>
