@@ -184,6 +184,6 @@
 	</distributionManagement>
 
 	<properties>
-		<tapestry-release-version>5.3.6</tapestry-release-version>
+		<tapestry-release-version>5.3.8</tapestry-release-version>
 	</properties>
 </project>
