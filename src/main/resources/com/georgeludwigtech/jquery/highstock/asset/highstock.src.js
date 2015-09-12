@@ -21714,7 +21714,7 @@ Scroller.prototype = {
 		// make room below the chart
 		chart.extraBottomMargin = scroller.outlineHeight + navigatorOptions.margin;
 
-		if (scroller.navigatorEnabled) {
+		if (scroller.navigatorEnabled==true) {
 			// an x axis is required for scrollbar also
 			scroller.xAxis = xAxis = new Axis(chart, merge({
 				// inherit base xAxis' break and ordinal options
