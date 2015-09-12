@@ -12495,7 +12495,7 @@ Chart.prototype = {
 	 * Show chart credits based on config options
 	 */
 	showCredits: function (credits) {
-		if (credits.enabled && !this.credits) {
+		if (credits.enabled==true && !this.credits) {
 			this.credits = this.renderer.text(
 				credits.text,
 				0,
