@@ -22868,7 +22868,7 @@ Axis.prototype.minFromRange = function () {
 wrap(Chart.prototype, 'init', function (proceed, options, callback) {
 	
 	addEvent(this, 'init', function () {
-		if (this.options.rangeSelector.enabled) {
+		if (this.options.rangeSelector.enabled==true) {
 			this.rangeSelector = new RangeSelector(this);
 		}
 	});
