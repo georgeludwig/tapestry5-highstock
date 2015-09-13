@@ -5982,7 +5982,7 @@ Tick.prototype = {
 		return {
 			x: horiz ?
 				axis.translate(pos + tickmarkOffset, null, null, old) + axis.transB :
-				axis.left + axis.offset + (axis.opposite ? ((old && chart.oldChartWidth) || chart.chartWidth) - axis.right - axis.left : 0),
+				axis.left + axis.offset + (axis.opposite==true ? ((old && chart.oldChartWidth) || chart.chartWidth) - axis.right - axis.left : 0),
 
 			y: horiz ?
 				cHeight - axis.bottom + axis.offset - (axis.opposite ? axis.height : 0) :
@@ -6118,7 +6118,7 @@ Tick.prototype = {
 			if (tickPosition === 'inside') {
 				tickLength = -tickLength;
 			}
-			if (axis.opposite) {
+			if (axis.opposite==true) {
 				tickLength = -tickLength;
 			}
 
@@ -6658,8 +6658,8 @@ Axis.prototype = {
 
 		axis.opposite = userOptions.opposite; // needed in setOptions
 		axis.side = userOptions.side || (axis.horiz ?
-				(axis.opposite ? 0 : 2) : // top : bottom
-				(axis.opposite ? 1 : 3));  // right : left
+				(axis.opposite==true ? 0 : 2) : // top : bottom
+				(axis.opposite==true ? 1 : 3));  // right : left
 
 		axis.setOptions(userOptions);
 
@@ -8221,10 +8221,10 @@ Axis.prototype = {
 			opposite = this.opposite,
 			offset = this.offset,
 			horiz = this.horiz,
-			lineLeft = this.left + (opposite ? this.width : 0) + offset,
-			lineTop = chart.chartHeight - this.bottom - (opposite ? this.height : 0) + offset;
+			lineLeft = this.left + (opposite==true ? this.width : 0) + offset,
+			lineTop = chart.chartHeight - this.bottom - (opposite==true ? this.height : 0) + offset;
 
-		if (opposite) {
+		if (opposite==true) {
 			lineWidth *= -1; // crispify the other way - #1480, #1687
 		}
 
@@ -8273,16 +8273,16 @@ Axis.prototype = {
 			// the position in the perpendicular direction of the axis
 			offAxis = (horiz ? axisTop + this.height : axisLeft) +
 				(horiz ? 1 : -1) * // horizontal axis reverses the margin
-				(opposite ? -1 : 1) * // so does opposite axes
+				(opposite==true ? -1 : 1) * // so does opposite axes
 				this.axisTitleMargin +
 				(this.side === 2 ? fontSize : 0);
 
 		return {
 			x: horiz ?
 				alongAxis + xOption :
-				offAxis + (opposite ? this.width : 0) + offset + xOption,
+				offAxis + (opposite==true ? this.width : 0) + offset + xOption,
 			y: horiz ?
-				offAxis + yOption - (opposite ? this.height : 0) + offset :
+				offAxis + yOption - (opposite==true ? this.height : 0) + offset :
 				alongAxis + yOption
 		};
 	},
@@ -20715,7 +20715,7 @@ seriesTypes.flags = extendClass(seriesTypes.column, {
 			// an undefined plotY, but then we must remove the shapeArgs (#847).
 			if (point.plotY === UNDEFINED) {
 				if (point.x >= xAxisExt.min && point.x <= xAxisExt.max) { // we're inside xAxis range
-					point.plotY = chart.chartHeight - xAxis.bottom - (xAxis.opposite ? xAxis.height : 0) + xAxis.offset - chart.plotTop;
+					point.plotY = chart.chartHeight - xAxis.bottom - (xAxis.opposite==true ? xAxis.height : 0) + xAxis.offset - chart.plotTop;
 				} else {
 					point.shapeArgs = {}; // 847
 				}
@@ -23307,7 +23307,7 @@ wrap(Axis.prototype, 'drawCrosshair', function (proceed, e, point) {
 	if (!crossLabel) {
 		crossLabel = this.crossLabel = chart.renderer.label()			
 		.attr({
-			align: options.align || (horiz ? 'center' : opposite ? (this.labelAlign === 'right' ? 'right' : 'left') : (this.labelAlign === 'left' ? 'left' : 'center')),
+			align: options.align || (horiz ? 'center' : opposite==true ? (this.labelAlign === 'right' ? 'right' : 'left') : (this.labelAlign === 'left' ? 'left' : 'center')),
 			zIndex: 12,
 			height: horiz ? 16 : UNDEFINED,
 			fill: options.backgroundColor || (this.series[0] && this.series[0].color) || 'gray',
@@ -23326,9 +23326,9 @@ wrap(Axis.prototype, 'drawCrosshair', function (proceed, e, point) {
 
 	if (horiz) {
 		posx = point.plotX + left;
-		posy = top + (opposite ? 0 : this.height);
+		posy = top + (opposite==true ? 0 : this.height);
 	} else {
-		posx = opposite ? this.width + left : 0;
+		posx = opposite==true ? this.width + left : 0;
 		posy = point.plotY + top;
 	}
 
@@ -23357,8 +23357,8 @@ wrap(Axis.prototype, 'drawCrosshair', function (proceed, e, point) {
 
 	// now it is placed we can correct its position
 	if (horiz) {
-		if (((this.options.tickPosition === 'inside') && !opposite) ||
-			((this.options.tickPosition !== 'inside') && opposite)) {
+		if (((this.options.tickPosition === 'inside') && !opposite==true) ||
+			((this.options.tickPosition !== 'inside') && opposite==true)) {
 			posy = crossLabel.y - crossBox.height;
 		}	
 	} else {
